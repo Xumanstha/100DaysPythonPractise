@@ -1,4 +1,5 @@
 import random
+import art
 cards=[11,2,3,4,5,6,7,8,9,10,10,10,10]
 user_cards=[]
 banker_cards=[]
@@ -107,6 +108,7 @@ def Black_Jack():
 def main():
     choice=input("Do you want to play a game of BlackJack? Type 'y' or 'n': ")
     if choice == 'y':
+        print(art.logo)
         initialize()
         Black_Jack() 
 
