@@ -67,7 +67,7 @@ def Check_Transaction(user_money,Coffee):
     elif user_money>Coffee["cost"]:
         return_money=user_money-Coffee["cost"]
         resources["Money"]+=Coffee["cost"]
-        print(f"Here is ${return_money} dollars in change")
+        print(f"Here is ${return_money:.2f} dollars in change")
     else:
         print(f"Sorry that's not the enough money. Money is refunded {user_money}")
         cash_fulfilled=False
@@ -85,12 +85,13 @@ def Coffee_Machine():
 
         if prompt=="off":
             on_the_coffee_machine=False
+            print("Turning off... Goodbye!")
         
         elif prompt=="report":
             Report()
             print("\n"*5)
 
-        elif prompt=="espresso":
+        elif prompt in MENU:
             if Check_Resource(MENU[prompt]):
                 if Check_Transaction(Process_Coins(),MENU[prompt]):
                     Make_Coffee(MENU[prompt])
@@ -100,30 +101,6 @@ def Coffee_Machine():
                     print("\n"*5)
                     continue
             else:
-                continue
-        elif prompt=="latte":
-            if Check_Resource(MENU[prompt]):
-                if Check_Transaction(Process_Coins(),MENU[prompt]):
-                    Make_Coffee(MENU[prompt])
-                    print(f"Here is your {prompt}. Enjoy!")
-                    print("\n"*5)
-                else:
-                    print("\n"*5)
-                    continue
-            else:
-                print("\n"*5)
-                continue
-        elif prompt=="cappucino":
-            if Check_Resource(MENU[prompt]):
-                if Check_Transaction(Process_Coins(),MENU[prompt]):
-                    Make_Coffee(MENU[prompt])
-                    print(f"Here is your {prompt}. Enjoy!")
-                    print("\n"*5)
-                else:
-                    print("\n"*5)
-                    continue
-            else:
-                print("\n"*5)
                 continue
         else:
             print("Try again! Invalid prompt")
